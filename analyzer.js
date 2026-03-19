@@ -29,7 +29,7 @@ async function runAnalyzer(url) {
   };
 
   // 🔥 ADD TEST CALLS HERE
-  await fetch("https://jsonplaceholder.typicode.com/posts");       // success
+  await fetch("https://maps.googleapis.com/maps/api/geocode/json?address=Manila&key=AIzaSyAwWUieKcOcGvkXn-P9CXvdZdDgmsI_1Go");       // success
   await fetch("https://jsonplaceholder.typicode.com/invalid");     // 404
   await fetch(url);                                                // your input
 
