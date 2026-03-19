@@ -5,7 +5,7 @@
 async function analyze() {
     const url = document.getElementById('url').value;
 
-    const res = await fetch('http://localhost:3000/analyze', {
+    const res = await fetch('https://gson022.github.io/API-Error-Analyer/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url })
