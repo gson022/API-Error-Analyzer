@@ -54,7 +54,7 @@ async function runAnalyzer(url) {
   };
 
   // Load the target URL (basic simulation)
-  await fetch(url);
+  window.open(url, "_blank");
 
   // Wait for logs to populate
   await new Promise(r => setTimeout(r, 3000));
