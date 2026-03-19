@@ -1,7 +1,7 @@
 async function runAnalyzer(url) {
   const logs = [];
 
-  // Intercept fetch
+  // intercept fetch
   const originalFetch = window.fetch;
   window.fetch = async (...args) => {
     const start = performance.now();
@@ -28,36 +28,12 @@ async function runAnalyzer(url) {
     }
   };
 
-  // Intercept XHR
-  const originalOpen = XMLHttpRequest.prototype.open;
-  XMLHttpRequest.prototype.open = function (method, url) {
-    this._url = url;
-    return originalOpen.apply(this, arguments);
-  };
+  // 🔥 ADD TEST CALLS HERE
+  await fetch("https://jsonplaceholder.typicode.com/posts");       // success
+  await fetch("https://jsonplaceholder.typicode.com/invalid");     // 404
+  await fetch(url);                                                // your input
 
-  const originalSend = XMLHttpRequest.prototype.send;
-  XMLHttpRequest.prototype.send = function () {
-    const start = performance.now();
-
-    this.addEventListener("loadend", () => {
-      const duration = performance.now() - start;
-
-      logs.push({
-        url: this._url,
-        status: this.status,
-        success: this.status >= 200 && this.status < 300,
-        duration
-      });
-    });
-
-    return originalSend.apply(this, arguments);
-  };
-
-  // Load the target URL (basic simulation)
-  window.open(url, "_blank");
-
-  // Wait for logs to populate
-  await new Promise(r => setTimeout(r, 3000));
+  await new Promise(r => setTimeout(r, 2000));
 
   return summarizeLogs(logs);
 }
