@@ -1,19 +1,18 @@
-<input id="url" placeholder="Enter URL" />
-<button onclick="analyze()">Analyze</button>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Failure Analyzer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>API Failure Analyzer</h1>
 
-<script>
-async function analyze() {
-    const url = document.getElementById('urlInput').value;
+  <input type="text" id="urlInput" placeholder="Enter website URL">
+  <button onclick="analyze()">Analyze</button>
 
-    const res = await fetch('https://gson022.github.io/API-Error-Analyer/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url })
-    });
+  <h2>Results</h2>
+  <pre id="output"></pre>
 
-    const data = await res.json();
-    console.log(data);
-}
-</script>
-<script src="analyzer.js"></script>
-<script src="app.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
