@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>API Failure Analyzer</title>
+</head>
+<script src="analyzer.js"></script>
+<script src="summarizer.js"></script>
 <body>
-  <h2>Test API Calls</h2>
+  <h1>API Failure Analyzer</h1>
 
-  <button onclick="makeCalls()">Trigger API Calls</button>
-    <script src="analyzer.js"></script>
-    <script src="summarizer.js"></script>
-  <script>
-    function makeCalls() {
-      // Success
-      fetch("https://jsonplaceholder.typicode.com/posts");
+  <input type="text" id="urlInput" placeholder="Enter website URL">
+  <button onclick="analyze()">Analyze</button>
 
-      // Fail (404)
-      fetch("https://jsonplaceholder.typicode.com/invalid");
+  <h2>Results</h2>
+  <pre id="output"></pre>
 
-      // Slow API simulation
-      setTimeout(() => {
-        fetch("https://jsonplaceholder.typicode.com/comments");
-      }, 2000);
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
