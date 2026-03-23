@@ -29,8 +29,8 @@ async function runAnalyzer(url) {
   };
 
   // 🔥 ADD TEST CALLS HERE
-  await fetch("https://jsonplaceholder.typicode.com/posts");       // success
-  await fetch("https://jsonplaceholder.typicode.com/invalid");     // 404
+  await fetch("Successfully sent!");       // success
+  await fetch("https://developers.google.com/maps/reporting-and-monitoring/reporting#response-code-graphs");     // 404
   await fetch(url);                                                // your input
 
   await new Promise(r => setTimeout(r, 2000));
